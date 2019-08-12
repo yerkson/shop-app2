@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import Shop from './views/Shop/Shop'
+import ShopGoods from './views/Shop/ShopGoods/ShopGoods'
+import ShopInfo from './views/Shop/ShopInfo/ShopInfo'
+import ShopRatings from './views/Shop/ShopRatings/ShopRatings'
+
 
 Vue.use(Router)
 
@@ -48,6 +53,32 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('./views/Login/Login')
+    },
+    {
+      path: '/',
+      redirect: '/msite'
+    },
+    {
+      path: '/shop',
+      component: Shop,
+      children: [
+        {
+          path: '/shop/goods',
+          component: ShopGoods
+        },
+        {
+          path: '/shop/ratings',
+          component: ShopRatings
+        },
+        {
+          path: '/shop/info',
+          component: ShopInfo
+        },
+        {
+          path: '',
+          redirect: '/shop/goods'
+        }
+      ]
     }
   ]
 })
