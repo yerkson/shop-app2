@@ -1,11 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
 import Shop from './views/Shop/Shop'
 import ShopGoods from './views/Shop/ShopGoods/ShopGoods'
 import ShopInfo from './views/Shop/ShopInfo/ShopInfo'
 import ShopRatings from './views/Shop/ShopRatings/ShopRatings'
-
 
 Vue.use(Router)
 
@@ -25,7 +23,7 @@ export default new Router({
       component: () => import('./views/Order/Order'),
       meta: {
         showFooter: true
-      }      
+      }
     },
     {
       path: '/profile',
@@ -33,7 +31,7 @@ export default new Router({
       component: () => import('./views/Profile/Profile'),
       meta: {
         showFooter: true
-      }      
+      }
     },
     {
       path: '/search',
@@ -44,7 +42,7 @@ export default new Router({
       component: () => import('./views/Search/Search'),
       meta: {
         showFooter: true
-      }      
+      }
     },
     {
       path: '/login',
@@ -64,18 +62,22 @@ export default new Router({
       children: [
         {
           path: '/shop/goods',
+          name: 'ShopGoods',
           component: ShopGoods
         },
         {
           path: '/shop/ratings',
+          name: 'ShopRatings',
           component: ShopRatings
         },
         {
           path: '/shop/info',
+          name: 'ShopInfo',
           component: ShopInfo
         },
         {
           path: '',
+          name: 'ShopGoods',
           redirect: '/shop/goods'
         }
       ]
